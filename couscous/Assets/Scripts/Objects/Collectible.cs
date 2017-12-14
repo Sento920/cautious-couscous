@@ -7,6 +7,9 @@ public class Collectible : MonoBehaviour {
 	Collider2D collectorArea;
 	Rigidbody2D rigidbody2D;
 
+	GameController gameController;
+	 public float value;
+
 
 	// Use this for initialization
 	void Start () {
@@ -14,13 +17,27 @@ public class Collectible : MonoBehaviour {
 		collectorArea = GetComponent<Collider2D>();
 	}
 
-	void OnTriggerEnter2D(Collider other){
+	void OnTriggerEnter2D(Collider2D other){
 		//Destroy ourselves, and re-attach to the Player.
 		if(other.gameObject.transform.tag == "player"){
 			Debug.Log("Player touch");
+			
+			Destroy(this.gameObject);
 		} else {
-			Debug.Log("Non-Player Touch");
+			// Attach to the Monster
 		}
+	}
+
+	public float getValue(){
+		return value;
+	} 
+
+	void DisableCollider(){
+		this.collectorArea.enabled = false;
+	}
+
+	void EnableCollider(){
+		this.collectorArea.enabled = true;
 	}
 
 }
