@@ -6,6 +6,7 @@ using UnityEngine;
 public class HUDController : MonoBehaviour {
 
 	Tuple<Text,float> Gold;
+	Tuple<Text,int> Keys;
 
 
 	Image health;
@@ -14,6 +15,7 @@ public class HUDController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Gold.getOne().text = "0 gold";
+		SetUpHealthBar();
 	}
 	
 	// Update is called once per frame
@@ -39,4 +41,16 @@ public class HUDController : MonoBehaviour {
 			Debug.Log("Not Enough gold");
 		}
 	}
+
+	public void AddKey(){
+		Keys.setTwo(Keys.getTwo() + 1);
+	}
+	public void RemoveKey(){
+		if(Keys.getTwo()- 1 > 0){
+			Keys.setTwo(Keys.getTwo() - 1);
+		}else{
+			Debug.Log("No Keys!");
+		}
+	}
+
 }
