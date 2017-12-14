@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
+	HUDController HUD;
 
 
 	// Use this for initialization
 	void Start () {
-		
+		HUD = GetComponent<HUDController>();
 	}
 	
 	// Update is called once per frame
