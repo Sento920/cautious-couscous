@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class HUDController : MonoBehaviour {
 
-	Tuple<Text,float> Gold;
-	Tuple<Text,int> Keys;
+	public Text GoldText;
+	float GoldNum = 0;
+	public Text KeyText;
+	int NumKeys = 0;
 
 
 	Image health;
@@ -14,40 +16,27 @@ public class HUDController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Gold.getOne().text = "0 gold";
-		SetUpHealthBar();
+		GoldText.text = "0 Gold";
+		KeyText.text = "0 Keys";
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-	void SetUpHealthBar(){
-		Texture2D bar = new Texture2D(1,1);
-		bar.SetPixel(0,0,Color.red);
-		health.sprite = Sprite.Create(bar, new Rect(), Vector2.zero);
-		health.rectTransform.position.Set((float)(MainHud.pixelRect.xMax *.85)/MainHud.pixelRect.xMax,
-											(float)(MainHud.pixelRect.yMax *.85)/MainHud.pixelRect.yMax ,1f);
-	}
-
 	public void AddGold(float gold){
-		Gold.setTwo(gold + Gold.getTwo());
+		GoldNum += gold;
 	}
 	public void RemoveGold(float gold){
-		if(Gold.getTwo() - gold > 0){
-			Gold.setTwo(Gold.getTwo() - gold);
+		if(GoldNum - gold > 0){
+			GoldNum -= gold;
 		}else{
 			Debug.Log("Not Enough gold");
 		}
 	}
 
 	public void AddKey(){
-		Keys.setTwo(Keys.getTwo() + 1);
+		NumKeys += 1;
 	}
 	public void RemoveKey(){
-		if(Keys.getTwo()- 1 > 0){
-			Keys.setTwo(Keys.getTwo() - 1);
+		if(NumKeys - 1 > 0){
+			NumKeys -= 1;
 		}else{
 			Debug.Log("No Keys!");
 		}

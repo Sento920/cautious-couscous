@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Coin : Collectible {
 	
+void Start(){
+	collectorArea = GetComponent<BoxCollider2D>();
+}
+
 void OnTriggerEnter2D(Collider2D other){
 		//Destroy ourselves, and re-attach to the Player.
 		if(other.gameObject.transform.tag == "player"){

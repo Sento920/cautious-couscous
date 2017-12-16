@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour {
 
-	Collider2D collectorArea;
-	Rigidbody2D rigidbody2D;
+	public Collider2D collectorArea;
+	public Rigidbody2D rigidbody2D;
 	public float value;
-
-	void Start () {
-		rigidbody2D = GetComponent<Rigidbody2D>();
-		collectorArea = GetComponent<Collider2D>();
-	}
 
 	public float getValue(){
 		return value;
@@ -23,6 +18,10 @@ public class Collectible : MonoBehaviour {
 
 	void EnableCollider(){
 		this.collectorArea.enabled = true;
+	}
+
+	void collect(){
+		
 	}
 
 }
