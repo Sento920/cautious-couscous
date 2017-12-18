@@ -9,10 +9,10 @@ public class HUDController : MonoBehaviour {
 	float GoldNum = 0;
 	public Text KeyText;
 	int NumKeys = 0;
-
-
 	Image health;
 	Canvas MainHud;
+
+	public Collectible[] CollectList;
 
 	// Use this for initialization
 	void Start () {
@@ -22,10 +22,12 @@ public class HUDController : MonoBehaviour {
 	
 	public void AddGold(float gold){
 		GoldNum += gold;
+		GoldText.text = GoldNum + " Gold";
 	}
 	public void RemoveGold(float gold){
 		if(GoldNum - gold > 0){
 			GoldNum -= gold;
+			GoldText.text = GoldNum + " Gold";
 		}else{
 			Debug.Log("Not Enough gold");
 		}
@@ -33,10 +35,12 @@ public class HUDController : MonoBehaviour {
 
 	public void AddKey(){
 		NumKeys += 1;
+		KeyText.text = NumKeys + " Keys";
 	}
 	public void RemoveKey(){
 		if(NumKeys - 1 > 0){
 			NumKeys -= 1;
+			KeyText.text = NumKeys + " Keys";
 		}else{
 			Debug.Log("No Keys!");
 		}

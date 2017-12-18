@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collectible : MonoBehaviour {
+public abstract class Collectible : MonoBehaviour {
 
 	public Collider2D collectorArea;
 	public Rigidbody2D rigidbody2D;
 	public float value;
+
+	
 
 	public float getValue(){
 		return value;
