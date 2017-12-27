@@ -12,10 +12,8 @@ public class Keys : Collectible {
 void OnTriggerEnter2D(Collider2D other){
 		//Destroy ourselves, and re-attach to the Player.
 		if(other.gameObject.transform.tag == "player"){
-			Debug.Log("Player touch");
-
-			Destroy(this.gameObject);
-		} else if(other.gameObject.transform.tag == "Door"){
+			Collect();
+		} else if(other.gameObject.transform.tag == "Door" && ){
 			// DOOR!
 			OpenLock(other);
 		}else{
@@ -26,6 +24,11 @@ void OnTriggerEnter2D(Collider2D other){
 
 	void OpenLock(Object other){
 		//get component door controller, check type of door to key (maybe) then unlock the door.
+	}
+
+	override public void Collect(){
+		GameObject.FindGameObjectWithTag("HUDController").GetComponent<HUDController>().AddKey();
+		Destroy(this.gameObject);
 	}
 
 }

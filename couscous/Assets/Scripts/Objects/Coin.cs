@@ -11,11 +11,13 @@ void Start(){
 void OnTriggerEnter2D(Collider2D other){
 		//Destroy ourselves, and re-attach to the Player.
 		if(other.gameObject.transform.tag == "Player"){
-			Debug.Log("Player touch");
-			GameObject.FindGameObjectWithTag("HUDController").GetComponent<HUDController>().AddGold(value);
-			Destroy(this.gameObject);
+			Collect();
 		} else {
 			// Attach to the Monster
 		}
+	}
+	override public void Collect(){
+		GameObject.FindGameObjectWithTag("HUDController").GetComponent<HUDController>().AddGold(value);
+		Destroy(this.gameObject);
 	}
 }

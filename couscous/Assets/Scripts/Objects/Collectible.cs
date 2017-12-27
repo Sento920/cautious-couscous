@@ -8,8 +8,6 @@ public abstract class Collectible : MonoBehaviour {
 	public Rigidbody2D rigidbody2D;
 	public float value;
 
-	
-
 	public float getValue(){
 		return value;
 	} 
@@ -22,8 +20,6 @@ public abstract class Collectible : MonoBehaviour {
 		this.collectorArea.enabled = true;
 	}
 
-	void collect(){
-		
-	}
+	abstract public void Collect();
 
 }
